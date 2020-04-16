@@ -8,8 +8,11 @@ import {parseISO } from 'date-fns';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppoinemtnService from '../services/CreateAppointmentService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const appointmentsRouter = Router();
 
+appointmentsRouter.use(ensureAuthenticated);
 
 
 // Rota: Reaceber a requisição, chamar um outro arquivo, devolver uma resposta
