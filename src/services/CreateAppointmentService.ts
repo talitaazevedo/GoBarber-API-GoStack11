@@ -5,7 +5,7 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
 
 /* Tipagem de dados  */
 interface Request {
-  provider: string;
+  provider_id: string;
   date: Date;
 
 }
@@ -19,7 +19,7 @@ interface Request {
 
 /* Todo service só tem um metodo */
 class CreateAppointmentService {
-  public async execute({provider,date}:Request): Promise<Appointment>{
+  public async execute({provider_id,date}:Request): Promise<Appointment>{
 
     const appointmentsRepository = getCustomRepository(AppointmentsRepository)
     const appointmentDate = startOfHour(date);
@@ -31,7 +31,7 @@ class CreateAppointmentService {
     }
     /*  O metodo create Cria uma instancia  mas não salva no banco */
     const appointment = appointmentsRepository.create({
-      provider,
+      provider_id,
       date:appointmentDate,
     });
     /* após a criação da instancia salvamos no banco */
