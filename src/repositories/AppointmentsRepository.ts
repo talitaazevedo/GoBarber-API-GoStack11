@@ -1,39 +1,22 @@
-import  { isEqual} from 'date-fns';
+
+import {EntityRepository, Repository} from 'typeorm'
 import Appointment from '../models/Appointment';
+/*@EntityRepository(Appointment) recebe como parametro o Model  */
+/* A Classe depende dop Repository qyue vem de type ORM Repository<Appointment>  */
+@EntityRepository(Appointment)
+class AppointmentsRepository extends Repository<Appointment>{
 
-//DTO Data Transfer Object
-interface CreateAppointmentDTO{
-  provider: string;
-  date: Date;
-}
-class AppointmentsRepository {
-  private appointments : Appointment[];
 
-  constructor(){
-    this.appointments = [];
-  }
+  /* O retorno de uma função asyncrona sempre é uma promise */
+  public async findByDate(date:Date): Promise<Appointment | null> {
 
-  public all(): Appointment[]{
-    return this.appointments;
-  }
+    const findAppointment = await this.findOne({
+      where:{ date },
+    })
 
-  public findByDate(date:Date): Appointment | null {
 
-    /* Find appointment in Same Date */
-  const findAppointment = this.appointments.find(appointment =>
-    isEqual(date,appointment.date),
-
-    );
 
   return findAppointment || null ;
-
-
-  }
-  /*  return then : Appointment the same return  above */
-  public create({provider, date}: CreateAppointmentDTO):Appointment{
-    const appointment = new Appointment({provider,date});
-    this.appointments.push(appointment);
-    return appointment;
 
 
   }

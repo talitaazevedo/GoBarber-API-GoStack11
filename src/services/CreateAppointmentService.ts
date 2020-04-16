@@ -1,8 +1,9 @@
 import { startOfHour} from 'date-fns';
+import {getCustomRepository} from  'typeorm';
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 
-
+/* Tipagem de dados  */
 interface Request {
   provider: string;
   date: Date;
@@ -13,34 +14,29 @@ interface Request {
  * Dependency Inversion (SOLID)
  * (SOLID)
  * single Responsability Principle
- * 
+ *
  */
 
 /* Todo service só tem um metodo */
 class CreateAppointmentService {
-  private appointmentsRepository: AppointmentsRepository;
+  public async execute({provider,date}:Request): Promise<Appointment>{
 
-  constructor(appointmentsRepository: AppointmentsRepository ){
-
-    this.appointmentsRepository = appointmentsRepository;
-
-
-  }
-
-  public execute({provider,date}:Request): Appointment{
+    const appointmentsRepository = getCustomRepository(AppointmentsRepository)
     const appointmentDate = startOfHour(date);
 
-    const findAppointmentInSameDate = this.appointmentsRepository.findByDate(appointmentDate);
+    const findAppointmentInSameDate = await appointmentsRepository.findByDate(appointmentDate);
 
     if(findAppointmentInSameDate){
       throw Error ('This appointment is already booked');
     }
-
-    const appointment = this.appointmentsRepository.create({
+    /*  O metodo create Cria uma instancia  mas não salva no banco */
+    const appointment = appointmentsRepository.create({
       provider,
       date:appointmentDate,
     });
-      return appointment;
+    /* após a criação da instancia salvamos no banco */
+    await appointmentsRepository.save(appointment);
+    return appointment;
 
 
   }
