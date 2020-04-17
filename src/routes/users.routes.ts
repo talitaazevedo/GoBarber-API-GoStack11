@@ -58,7 +58,7 @@ usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async
     return response.status(400).json({ error: err.message });
 
   }
-  console.log(request.file);
+
 
 
 
