@@ -30,12 +30,11 @@ class CreateAppointmentService {
       throw new AppError('This appointment is already booked');
     }
     /*  O metodo create Cria uma instancia  mas não salva no banco */
-    const appointment = appointmentsRepository.create({
+    const appointment = await appointmentsRepository.create({
       provider_id,
       date: appointmentDate,
     });
-    /* após a criação da instancia salvamos no banco */
-    await appointmentsRepository.save(appointment);
+
     return appointment;
   }
 }
