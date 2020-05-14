@@ -1,8 +1,15 @@
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import User from '@modules/users/infra/typeorm/entities/User';
 
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn} from 'typeorm';
-import User from './User';
-
-  /*
+/*
 relacionamentos
   Um para Um  ( OneToOne)
   Um para Muitos ( OneToMany)
@@ -18,22 +25,18 @@ class Appointment {
   @Column()
   provider_id: string;
 
-  @ManyToOne(()=> User)
-  @JoinColumn({name: 'provider_id'})
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'provider_id' })
   provider: User;
 
   @Column('timestamp with time zone')
   date: Date;
 
   @CreateDateColumn()
-  created_at:Date;
+  created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
-
-
-
-
 }
 
 export default Appointment;
