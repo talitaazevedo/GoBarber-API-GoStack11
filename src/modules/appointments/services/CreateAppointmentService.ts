@@ -1,28 +1,30 @@
 import { startOfHour } from 'date-fns';
-import { getCustomRepository } from 'typeorm';
+
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
-import AppointmentsRepository from '@modules/appointments/repositories/AppointmentsRepository';
+
 import AppError from '@shared/errors/AppError';
+import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 /* Tipagem de dados  */
-interface Request {
+interface IRequest {
   provider_id: string;
   date: Date;
 }
 
-/**
- * Dependency Inversion (SOLID)
- * (SOLID)
- * single Responsability Principle
- *
- */
+// SOLID
+// D Dependency Inversion
 
-/* Todo service só tem um metodo */
+// # Single Responsability Principle
+// Open Closed Principle
+// # Liskov Substitusion Principle
+// Interface Segregations Principle
+// # Dependency Invertion Principle
+
 class CreateAppointmentService {
-  public async execute({ provider_id, date }: Request): Promise<Appointment> {
-    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+  constructor(private appointmentsRepository: IAppointmentsRepository) {}
+  public async execute({ provider_id, date }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
-    const findAppointmentInSameDate = await appointmentsRepository.findByDate(
+    const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
     );
 
@@ -30,7 +32,7 @@ class CreateAppointmentService {
       throw new AppError('This appointment is already booked');
     }
     /*  O metodo create Cria uma instancia  mas não salva no banco */
-    const appointment = await appointmentsRepository.create({
+    const appointment = await this.appointmentsRepository.create({
       provider_id,
       date: appointmentDate,
     });
