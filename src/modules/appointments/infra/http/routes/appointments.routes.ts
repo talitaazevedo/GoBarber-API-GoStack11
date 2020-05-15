@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { parseISO } from 'date-fns';
+import { container } from 'tsyringe';
 
 // DTO => Data Transfer Object => using objects
 
-import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
-import CreateAppoinemtnService from '@modules/appointments/services/CreateAppointmentService';
+import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
@@ -19,13 +19,12 @@ appointmentsRouter.use(ensureAuthenticated);
 // });
 
 appointmentsRouter.post('/', async (request, response) => {
-  const appointmentsRepository = new AppointmentsRepository();
   const { provider_id, date } = request.body;
 
   /* Convert date */
   const parsedDateIso = parseISO(date);
-
-  const createAppointment = new CreateAppoinemtnService(appointmentsRepository);
+  // Importamos o container do tsyringe e passamos resolve() instanciar  o repositorio.
+  const createAppointment = container.resolve(CreateAppointmentService);
 
   const appointment = await createAppointment.execute({
     provider_id,
