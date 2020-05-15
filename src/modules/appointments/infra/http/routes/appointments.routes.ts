@@ -11,7 +11,6 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 const appointmentsRouter = Router();
 
 appointmentsRouter.use(ensureAuthenticated);
-const appointmentsRepository = new AppointmentsRepository();
 
 // Rota: Reaceber a requisição, chamar um outro arquivo, devolver uma resposta
 // appointmentsRouter.get('/', async (request, response) => {
@@ -20,6 +19,7 @@ const appointmentsRepository = new AppointmentsRepository();
 // });
 
 appointmentsRouter.post('/', async (request, response) => {
+  const appointmentsRepository = new AppointmentsRepository();
   const { provider_id, date } = request.body;
 
   /* Convert date */
