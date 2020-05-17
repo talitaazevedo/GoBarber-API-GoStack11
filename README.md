@@ -3,9 +3,9 @@
 - [x] Rotas e Controllers
 - [x] Repositório de tokens (TypeORM)
 - [x] Criar Migration de Tokens
-- [] Provider de envio de email( DEV )
-- [] Registrar providers no container
-- [] Testar Tudo
+- [x] Provider de envio de email( DEV )
+- [x] Registrar providers no container
+- [x] Testar Tudo
 
 <!-- Requisitos funcionais -->
 **RF**
