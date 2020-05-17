@@ -3,9 +3,10 @@
 <!-- Requisitos funcionais -->
 **RF**
 
-- o usuário deve  poder recuperar sua senha informando o seu e-mail;.
-- o usuário deve receber um e-mail com instruções de recuperação de senha.
-- o usuario deve poder resetar sua senha.
+- [x] o usuário deve  poder recuperar sua senha informando o seu e-mail;.
+- [] usuário deve receber um e-mail com instruções de recuperação de senha.
+- [] o usuario deve poder resetar sua senha.
+
 
 <!--Requisitos não funcionanis  -->
 **RNF**
@@ -20,9 +21,9 @@
 - o link enviado para resetar senha, deve expirar em 2h;
 - O usuário precisa confirmar a nova senha ao resetar sua senha;
 
--
 
-# Atulização do Perfil
+
+# Atualização do Perfil
 
 **RF**
 
