@@ -6,17 +6,12 @@ temp/
 
 
 
-/coverage
-/coverage/*
-/coverage/lcov-report
+
+coverage/*
+coverage/**/*
+!coverage/.gitkeep
+
+
 .gitignore
 
-coverage/lcov-report/users/services/UpdateUserAvatarService.ts.html
-coverage/lcov-report/users/services/index.html
-coverage/lcov-report/users/services/CreateUserService.ts.html
-coverage/lcov-report/users/services/AuthenticateUserService.ts.html
-coverage/lcov-report/appointments/services/index.html
-coverage/lcov-report/appointments/services/CreateAppointmentService.ts.html
-coverage/lcov-report/index.html
-coverage/lcov.info
-coverage/.gitkeep
+

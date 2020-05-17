@@ -1,11 +1,18 @@
 # Recuperação de senha
 
+- [x] Rotas e Controllers
+- [x] Repositório de tokens (TypeORM)
+- [x] Criar Migration de Tokens
+- [] Provider de envio de email( DEV )
+- [] Registrar providers no container
+- [] Testar Tudo
+
 <!-- Requisitos funcionais -->
 **RF**
 
 - [x] o usuário deve  poder recuperar sua senha informando o seu e-mail;.
 - [x] usuário deve receber um e-mail com instruções de recuperação de senha.
-- [] o usuario deve poder resetar sua senha.
+- [x] o usuario deve poder resetar sua senha.
 
 
 <!--Requisitos não funcionanis  -->
