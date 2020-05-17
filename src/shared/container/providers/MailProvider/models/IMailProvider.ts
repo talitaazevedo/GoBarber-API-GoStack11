@@ -1,5 +1,7 @@
+import ISendMailDTO from '../dtos/ISendMailDTO';
+
 // Primeiro Criar os models
 export default interface IMailProvider {
   // KISS Keep it Simple and Stupid
-  sendMail(to: string, body: string): Promise<void>;
+  sendMail(data: ISendMailDTO): Promise<void>;
 }
