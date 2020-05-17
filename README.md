@@ -4,7 +4,7 @@
 **RF**
 
 - [x] o usuário deve  poder recuperar sua senha informando o seu e-mail;.
-- [] usuário deve receber um e-mail com instruções de recuperação de senha.
+- [x] usuário deve receber um e-mail com instruções de recuperação de senha.
 - [] o usuario deve poder resetar sua senha.
 
 
@@ -13,7 +13,7 @@
 
 - Utilizar Mailtrap para testar envios em ambiente de desenvolvimento.
 - Utilizar Amazon SES, para envios em produção;
-- O envio de Emails deve acontecer em segundo plano( Background Job)
+- O envio de Emails deve acontecer em segundo plano( Background Job).
 
 <!-- Regras de Negocio -->
 **RN**
