@@ -34,15 +34,15 @@
 
 **RF**
 
-- O usuário deve poder atualizar seu nome, email, senha;
+- [x] O usuário deve poder atualizar seu nome, email, senha;
 
 **RNF**
 
 **RN**
 
-- O usuário não pode alterar seu email, para um e-mail já utilizado;
-- Para atualizar sua senha, o usuário deve informar a senha antiga;
-- Para atualizar sua senha o usuário precisa confirmar a nova senha;
+- [x] O usuário não pode alterar seu email, para um e-mail já utilizado;
+- [x] Para atualizar sua senha, o usuário deve informar a senha antiga;
+- [x] Para atualizar sua senha o usuário precisa confirmar a nova senha;
 
 # Painel do Prestador
 
@@ -68,16 +68,15 @@
 
 **RF**
 
-- O usuário deve poder listar todos os prestadores de serviço cadastrados;
-- O usuário deve poder listar os dias de um mes com pelo menos um horário disponivel de um prestador;
-- O usuário deve poder listar horários disponiveis em um dia especifico de um prestador;
-- O usuário deve poder realizar um novo agendamento com um prestador;
+- [] O usuário deve poder listar todos os prestadores de serviço cadastrados;
+- [] O usuário deve poder listar os dias de um mes com pelo menos um horário disponivel de um prestador;
+- [] O usuário deve poder listar horários disponiveis em um dia especifico de um prestador;
+- [] O usuário deve poder realizar um novo agendamento com um prestador;
 
 **RNF**
 
 - A listagem de prestadores deve ser armazenada em cache;
 
--
 
 **RN**
 
@@ -87,4 +86,4 @@
 - O usuário não pode agendar em um horário que já passou;
 - O usuário não pode agendar serviços consigo mesmo;
 
--
+
