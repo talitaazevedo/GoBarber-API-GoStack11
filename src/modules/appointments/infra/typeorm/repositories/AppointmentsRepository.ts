@@ -1,7 +1,9 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Repository, Raw } from 'typeorm';
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
+import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
+import { getMonth } from 'date-fns';
 /*@EntityRepository(Appointment) recebe como parametro o Model  */
 /* A Classe depende dop Repository qyue vem de type ORM Repository<Appointment>  */
 
@@ -18,6 +20,31 @@ class AppointmentsRepository implements IAppointmentsRepository {
   private ormRepository: Repository<Appointment>;
   constructor() {
     this.ormRepository = getRepository(Appointment);
+  }
+
+  public async findAllInMonthFromProvider({
+    provider_id,
+    month,
+    year,
+  }: IFindAllInMonthFromProviderDTO): Promise<Appointment[]> {
+    // Vou converter o mês para não ter problemas  por conta do 01
+    // se o meu mes que está sendo convertido numa string for  1 ele faz 01,
+    // ou seja tem que ter no minimo dois digitos e ele completa a esquerda
+    const parserMonth = String(month).padStart(2, '0');
+    const appointments = await this.ormRepository.find({
+      where: {
+        provider_id,
+        // Aqui é uma query que se faz diretamente no banco
+        // o TypeORM muda o nome de todos os campos no banco
+        // para pegar utilize o DAteFieldName
+        // função do postgres
+        date: Raw(
+          dateFieldName =>
+            `to_char(${dateFieldName}, 'MM-YYYY') = '${parserMonth}-${year}'`,
+        ),
+      },
+    });
+    return appointments;
   }
   /* O retorno de uma função asyncrona sempre é uma promise */
   public async findByDate(date: Date): Promise<Appointment | undefined> {

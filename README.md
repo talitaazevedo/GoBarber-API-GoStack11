@@ -68,8 +68,8 @@
 
 **RF**
 
-- [] O usuário deve poder listar todos os prestadores de serviço cadastrados;
-- [] O usuário deve poder listar os dias de um mes com pelo menos um horário disponivel de um prestador;
+- [x] O usuário deve poder listar todos os prestadores de serviço cadastrados;
+- [x] O usuário deve poder listar os dias de um mes com pelo menos um horário disponivel de um prestador;
 - [] O usuário deve poder listar horários disponiveis em um dia especifico de um prestador;
 - [] O usuário deve poder realizar um novo agendamento com um prestador;
 
