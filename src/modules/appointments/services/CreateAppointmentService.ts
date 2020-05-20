@@ -9,6 +9,7 @@ import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 /* Tipagem de dados  */
 interface IRequest {
   provider_id: string;
+  user_id: string;
   date: Date;
 }
 
@@ -27,7 +28,11 @@ class CreateAppointmentService {
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
   ) {}
-  public async execute({ provider_id, date }: IRequest): Promise<Appointment> {
+  public async execute({
+    provider_id,
+    user_id,
+    date,
+  }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
@@ -40,6 +45,7 @@ class CreateAppointmentService {
     /*  O metodo create Cria uma instancia  mas não salva no banco */
     const appointment = await this.appointmentsRepository.create({
       provider_id,
+      user_id,
       date: appointmentDate,
     });
 
