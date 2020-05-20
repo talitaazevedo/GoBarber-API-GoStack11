@@ -2,7 +2,7 @@
 
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
-import { getDaysInMonth, getDate, getHours } from 'date-fns';
+import { getDaysInMonth, getDate, getHours, isAfter } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
@@ -47,14 +47,21 @@ class ListProviderDayAvailabilittyService {
       { length: 10 },
       (_, index) => index + hourStart,
     );
+    const currentDate = new Date(Date.now());
 
     const availability = eachHourArray.map(hour => {
       const hasAppointmentInHour = appointments.find(
         appointment => getHours(appointment.date) === hour,
       );
+      // Pega a data atual
+
+      // pega as informações de data e horário para comparação
+      const compareDate = new Date(year, month - 1, day, hour);
+
       return {
         hour,
-        available: !hasAppointmentInHour,
+        // retorna true se !NAO houver agendamento, e a data for Depois de  Agora
+        available: !hasAppointmentInHour && isAfter(compareDate, currentDate),
       };
     });
     console.log('Hour', availability);
