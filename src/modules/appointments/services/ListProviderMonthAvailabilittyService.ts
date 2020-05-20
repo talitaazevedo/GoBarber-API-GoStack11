@@ -53,7 +53,7 @@ class ListProviderMonthAvailabilittyService {
     // Aqui eu faço apenas um filtro para buscar  as
     //  informações da query
     const availability = eachDayArray.map(day => {
-      // faz um filtro e essa função do datefns getDAte retorna um dia
+      // faz um filtro e essa função do datefns getDAte
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
       });
