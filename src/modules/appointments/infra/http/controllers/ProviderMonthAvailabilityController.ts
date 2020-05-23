@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import ListProviderMonthAvailabilittyService from '@modules/appointments/services/ListProviderMonthAvailabilittyService';
+import ListProviderMonthAvailabilityService from '@modules/appointments/services/ListProviderMonthAvailabilityService';
 
 export default class ProviderMonthAvailabilityController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -8,7 +8,7 @@ export default class ProviderMonthAvailabilityController {
     const { month, year } = request.body;
     // Importamos o container do tsyringe e passamos resolve() instanciar  o repositorio.
     const listProviders = container.resolve(
-      ListProviderMonthAvailabilittyService,
+      ListProviderMonthAvailabilityService,
     );
 
     const availability = await listProviders.execute({
