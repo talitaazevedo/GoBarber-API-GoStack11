@@ -34,4 +34,10 @@ describe('ListProvidersService', () => {
 
     expect(providers).toEqual([user1, user2]);
   });
+
+  it('should not be able to list providers without a user', async () => {
+    await expect(
+      listProviders.execute({ user_id: 'not' }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 });
