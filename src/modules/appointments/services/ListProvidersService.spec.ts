@@ -37,7 +37,7 @@ describe('ListProvidersService', () => {
 
   it('should not be able to list providers without a user', async () => {
     await expect(
-      listProviders.execute({ user_id: 'not' }),
+      listProviders.execute({ user_id: 'not-found-user-id' }),
     ).rejects.toBeInstanceOf(AppError);
   });
 });
