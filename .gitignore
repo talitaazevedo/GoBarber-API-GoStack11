@@ -4,6 +4,10 @@ tmp/*
 
 temp/
 
+.env
+ormconfig.json
+
+
 
 
 
