@@ -1,11 +1,13 @@
-# <p align="center">API GoBarber GoStack 11</p>
+# <center>API GoBarber GoStack 11</center>
 
 ---
-<p align="center">
-  <img alt= "Repository Commits" src="https://img.shields.io/github/last-commit/tnazevedo/GoBarber-API-GoStack11?color=blue&style=for-the-badge"/>
+<p align="center" style="display: inline">
 
-  <img alt="Repository Size" src="https://img.shields.io/github/repo-size/tnazevedo/GoBarber-API-GoStack11?style=for-the-badge"/>
+![Last Commit](https://img.shields.io/github/last-commit/tnazevedo/GoBarber-API-GoStack11?color=blue&style=for-the-badge)
+
+![Repository Size](https://img.shields.io/github/repo-size/tnazevedo/GoBarber-API-GoStack11?style=for-the-badge)
 </p>
+
 
 ---
 
@@ -28,7 +30,10 @@
 - [x] Variáveis ambiente
 - [x] Utilizando o Class Transformer
 - [x] Organizando o Container
-- [] Upload de arquivos para o Amazon S3
+- [x] Upload de arquivos para o Amazon S3
+  - **Amazon S3**  - CDN (Content Delivery NetWork)
+  - **Escala vertical** - Aumenta os Recursos
+  - **Escala horizontal** - Cria um novo servidor (Distribuição de carga)
 
 ---
 
