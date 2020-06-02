@@ -1,17 +1,18 @@
 # <center>API GoBarber GoStack 11</center>
 
 ---
-<p align="center" style="display: inline">
+<p align="center">
 
-![Last Commit](https://img.shields.io/github/last-commit/tnazevedo/GoBarber-API-GoStack11?color=blue&style=for-the-badge)
+<img alt="Last Commit" src="https://img.shields.io/github/last-commit/tnazevedo/GoBarber-API-GoStack11?color=blue&style=for-the-badge"/>
 
-![Repository Size](https://img.shields.io/github/repo-size/tnazevedo/GoBarber-API-GoStack11?style=for-the-badge)
+<img alt="Repository Size" src="https://img.shields.io/github/repo-size/tnazevedo/GoBarber-API-GoStack11?style=for-the-badge"/>
+
 </p>
 
 
 ---
 
-## Aulas
+## <center>Aulas Nível 4 e 5 </center>
 
 ---
 
@@ -39,7 +40,7 @@
 
 ### Cache e Segurança
 
-- [] Configurando cache
+- [x] Configurando cache
 - [] Lista de providers
 - [] Invalidando cache
 - [] Cache de agendamentos
