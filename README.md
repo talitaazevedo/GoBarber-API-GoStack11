@@ -45,6 +45,6 @@
 - [x] Invalidando cache
 - [x] Cache de agendamentos
 - [x] Refatorando testes
-- [] Express rate limit
+- [x] Express rate limit
 
 ---
