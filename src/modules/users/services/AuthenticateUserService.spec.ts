@@ -3,17 +3,18 @@ import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHa
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
 import CreateUserService from '@modules/users/services/CreateUserService';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 
 let fakeUserRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
 let createUser: CreateUserService;
 let authenticateUser: AuthenticateUserService;
+let fakeCacheProvider: FakeCacheProvider;
 describe('AuthenticateUser', () => {
   beforeEach(() => {
     fakeUserRepository = new FakeUsersRepository();
     fakeHashProvider = new FakeHashProvider();
-
-    createUser = new CreateUserService(fakeUserRepository, fakeHashProvider);
+    fakeCacheProvider = new FakeCacheProvider();
 
     authenticateUser = new AuthenticateUserService(
       fakeUserRepository,
@@ -21,7 +22,7 @@ describe('AuthenticateUser', () => {
     );
   });
   it('should be able to authenticate', async () => {
-    const user = await createUser.execute({
+    const user = await fakeUserRepository.create({
       name: 'Jhon Doe',
       email: 'jhondoe@example.com',
       password: '123456',
@@ -44,7 +45,7 @@ describe('AuthenticateUser', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
   it('should not be able to authenticate with wrong password', async () => {
-    await createUser.execute({
+    await fakeUserRepository.create({
       name: 'Jhon Doe',
       email: 'jhondoe@example.com',
       password: '123456',

@@ -31,15 +31,15 @@ class ListProvidersService {
       users = await this.usersRepository.findAllProviders({
         expect_user_id: user_id,
       });
+      if (!users || users.length == 0 || users == null) {
+        throw new AppError('User not found');
+      }
+
       console.log('A query no banco foi feita!!');
 
       await this.cacheProvider.save(`providers-list:${user_id}`, users);
 
       console.log('Salvou no cache');
-    }
-
-    if (!users || users.length == 0 || users == null) {
-      throw new AppError('User not found');
     }
 
     return users;

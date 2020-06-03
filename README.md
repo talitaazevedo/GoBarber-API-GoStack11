@@ -1,4 +1,4 @@
-# <center>API GoBarber GoStack 11</center>
+# <p align = "center"> API GoBarber GoStack 11</p>
 
 ---
 <p align="center">
@@ -44,7 +44,7 @@
 - [x] Lista de providers
 - [x] Invalidando cache
 - [x] Cache de agendamentos
-- [] Refatorando testes
+- [x] Refatorando testes
 - [] Express rate limit
 
 ---
