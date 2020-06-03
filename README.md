@@ -41,8 +41,8 @@
 ### Cache e Segurança
 
 - [x] Configurando cache
-- [] Lista de providers
-- [] Invalidando cache
+- [x] Lista de providers
+- [x] Invalidando cache
 - [] Cache de agendamentos
 - [] Refatorando testes
 - [] Express rate limit
