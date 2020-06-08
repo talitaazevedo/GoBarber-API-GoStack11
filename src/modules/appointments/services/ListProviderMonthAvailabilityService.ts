@@ -2,9 +2,8 @@
 
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
-import { getDaysInMonth, getDate } from 'date-fns';
+import { getDaysInMonth, getDate, isAfter } from 'date-fns';
 
-import AppError from '@shared/errors/AppError';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
 interface IRequest {
@@ -53,13 +52,18 @@ class ListProviderMonthAvailabilityService {
     // Aqui eu faço apenas um filtro para buscar  as
     //  informações da query
     const availability = eachDayArray.map(day => {
+      const compareDate = new Date(year, month - 1, day, 23, 59, 59);
       // faz um filtro e essa função do datefns getDAte
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
       });
       // Retorna um objeto, available retorna true ou false,
       // se for menor que 10 quer dizer que eu tenho  ao menos um horário livre no dia, ai ele retorna true.
-      return { day, available: appointmentsInDay.length < 10 };
+      return {
+        day,
+        available:
+          isAfter(compareDate, new Date()) && appointmentsInDay.length < 10,
+      };
     });
 
     console.log('Availability', availability);
