@@ -20,7 +20,7 @@ interface IUploadConfig {
 }
 
 export default {
-  driver: process.env.STORAGE_DRIVER,
+  driver: process.env.STORAGE_DRIVER || 'disk',
   tmpFolder: tmpFolder,
   uploadsFolder: path.resolve(tmpFolder, 'uploads'),
   multer: {
@@ -39,4 +39,4 @@ export default {
       bucket: 'app-gobarber-bucket2',
     },
   },
-};
+} as IUploadConfig;

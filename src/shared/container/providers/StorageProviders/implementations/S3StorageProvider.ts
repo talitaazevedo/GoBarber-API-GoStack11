@@ -28,7 +28,7 @@ class S3StorageProvider implements IStorageProvider {
         ACL: 'public-read',
         Body: fileContent,
         ContentType,
-        ContentDisposition: `inline; filename=${file}`,
+        // ContentDisposition: `inline; filename=${file}`,
       })
       .promise();
     await fs.promises.unlink(originalPath);
@@ -37,7 +37,7 @@ class S3StorageProvider implements IStorageProvider {
   public async deleteFile(file: string): Promise<void> {
     await this.client
       .deleteObject({
-        Bucket: 'app-gobarber-bucket2',
+        Bucket: uploadConfig.config.aws.bucket,
         Key: file,
       })
       .promise();
