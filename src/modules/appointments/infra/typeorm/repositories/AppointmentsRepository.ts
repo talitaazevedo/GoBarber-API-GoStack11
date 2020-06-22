@@ -35,10 +35,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     const appointments = await this.ormRepository.find({
       where: {
         provider_id,
-        // Aqui é uma query que se faz diretamente no banco
-        // o TypeORM muda o nome de todos os campos no banco
-        // para pegar utilize o DAteFieldName
-        // função do postgres
+
         date: Raw(
           dateFieldName =>
             `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parsedDay}-${parserMonth}-${year}'`,
@@ -46,6 +43,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
       },
       relations: ['user'],
     });
+
     return appointments;
   }
   public async findAllInMonthFromProvider({
@@ -57,6 +55,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     // se o meu mes que está sendo convertido numa string for  1 ele faz 01,
     // ou seja tem que ter no minimo dois digitos e ele completa a esquerda
     const parserMonth = String(month).padStart(2, '0');
+
     const appointments = await this.ormRepository.find({
       where: {
         provider_id,

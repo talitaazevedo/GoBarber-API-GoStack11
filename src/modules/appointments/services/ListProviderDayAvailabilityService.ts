@@ -53,7 +53,6 @@ class ListProviderDayAvailabilittyService {
       const hasAppointmentInHour = appointments.find(
         appointment => getHours(appointment.date) === hour,
       );
-      // Pega a data atual
 
       // pega as informações de data e horário para comparação
       const compareDate = new Date(year, month - 1, day, hour);
