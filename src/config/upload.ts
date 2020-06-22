@@ -20,14 +20,14 @@ interface IUploadConfig {
 }
 
 export default {
-  driver: process.env.STORAGE_DRIVER || 'disk',
+  driver: process.env.STORAGE_DRIVER,
   tmpFolder: tmpFolder,
   uploadsFolder: path.resolve(tmpFolder, 'uploads'),
   multer: {
     storage: multer.diskStorage({
       destination: tmpFolder,
       filename(request, file, callback) {
-        const fileHash = crypto.randomBytes(10).toString('HEX');
+        const fileHash = crypto.randomBytes(10).toString('hex');
         const filename = `${fileHash}-${file.originalname}`;
         return callback(null, filename);
       },
