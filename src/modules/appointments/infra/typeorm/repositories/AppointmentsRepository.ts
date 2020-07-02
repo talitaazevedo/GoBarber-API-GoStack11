@@ -59,16 +59,13 @@ class AppointmentsRepository implements IAppointmentsRepository {
     const appointments = await this.ormRepository.find({
       where: {
         provider_id,
-        // Aqui é uma query que se faz diretamente no banco
-        // o TypeORM muda o nome de todos os campos no banco
-        // para pegar utilize o DAteFieldName
-        // função do postgres
         date: Raw(
           dateFieldName =>
             `to_char(${dateFieldName}, 'MM-YYYY') = '${parserMonth}-${year}'`,
         ),
       },
     });
+
     return appointments;
   }
   /* O retorno de uma função asyncrona sempre é uma promise */

@@ -5,6 +5,7 @@ import ListProviderMonthAvailabilityService from '@modules/appointments/services
 export default class ProviderMonthAvailabilityController {
   public async index(request: Request, response: Response): Promise<Response> {
     const { provider_id } = request.params;
+    console.log('PARAMS', request.params);
     const { month, year } = request.query;
     // Importamos o container do tsyringe e passamos resolve() instanciar  o repositorio.
     const listProviders = container.resolve(
